@@ -1,9 +1,9 @@
 FROM python:3-alpine3.10
-LABEL author = "tinku"
+LABEL author = "khaja"
 EXPOSE 5000
-RUN git clone https://github.com/Sysnove/flask-hello-world.git && \
-    cd flask-hello-world && \
-    mv hello.py app.py && \
+RUN mkdir /flask-hello-world
+ADD . /flask-hello-world
+RUN cd flask-hello-world && \
     pip3 install flask
 WORKDIR /flask-hello-world
-CMD ["flask", "run", "-h", "0.0.0.0"]     
+CMD ["flask", "run", "-h", "0.0.0.0"]    
